@@ -1,0 +1,46 @@
+JAVA有split方法，有很多功能和我QuestionController里很像，大家可以参考下。
+1.所用的数据表为voteinfo，vote_result,  user_join_vote
+
+voteinfo:
+class_id：课程号
+vote_id：投票号
+theme：投票的主题
+option：投票的选项（note：格式为“张桐-宋神”），每个选项之间用"-"隔开
+option_num：该投票每个选项被选择的次数（note：格式为"0-2-3"），每个数字之间用"-"隔开，初始为全为0
+publish_time：该投票发布的时间，（(String) new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+
+user_join_vote:
+vote_id：投票号
+class_id：课程号
+uid：用户id
+option_selected：每个选项被选择的次数，格式同上面的option_num。
+
+2.所需要的api接口
+
+发布投票
+插入voteinfo
+request：class_id,vote_theme,option_cnt（选项个数）,data:[{a,b,c,d},{a,b,c,d},...]
+response：new Result(我们自己的那个类)
+public Result PublishVote(@RequestBody Map<String,Object>map,@PathVariable int class_id){
+     
+}
+
+查询某个class下面已经发布过的投票
+查询voteinfo
+request：class_id
+response：[{vote_theme,vote_id,publish_time},...]
+public List<Map<String,Object>> CheckVote(@PathVariable int class_id){
+     
+}
+
+提交你的投票结果
+更新voteinfo，插入user_join_vote
+request：class_id,vote_id,user_id,vote_result(此处为一个字符串，格式为"0,1,4"，代表每个选项选择的下标，对应abcd)
+response：Result
+public Result SubmitVoteResult(@RequestBody Map<String,Object>map，@PathVariable int class_id){
+     
+}
+
+
+ps:哪里没写清楚或者有问题，直接q我。有很多其实在QuestionController里面实现过一次，可以参考一下，但我没写注释，可能
+阅读起来挺困难的。q我，我口头解释接口。
