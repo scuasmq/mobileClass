@@ -114,6 +114,4 @@ public class QuestionController {
         ans_map.put("true_count",true_cnt);
         return ans_map;
     }
-
-
 }

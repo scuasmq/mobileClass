@@ -3,6 +3,7 @@ package com.smq.mainproject.Entity;
 public class ClassTable{
     int user_id;
     String class_name;
+
     public int getUser_id() {
         return user_id;
     }

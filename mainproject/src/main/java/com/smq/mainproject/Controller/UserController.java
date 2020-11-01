@@ -38,6 +38,7 @@ public class UserController {
         return new Result("200","SUCCESS");
     }
 
+
     @CrossOrigin
     @RequestMapping(value = "/login/{username}/{password}")
     @ResponseBody
