@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "54761aa1-dd02-4cf6-9646-265867c36995",
+		"name": "UserController",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "registerPOST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"smq\",\r\n    \"password\":\"scusmq\",\r\n    \"mailbox\":\"871805518@qq.com\",\r\n    \"school\":\"scu\",\r\n    \"school_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				},
+				"description": "用户注册"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
