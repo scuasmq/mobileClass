@@ -33,7 +33,9 @@ public class VoteController {
     @CrossOrigin
     @RequestMapping(value = "/check_vote/{class_id}")
     public List<Map<String,Object>> CheckVote(@PathVariable int class_id){
-
+        String pre_sql = "select vote_theme,vote_id,publish_time from voteinfo where class_id = ?";
+        Object args[] = {class_id};
+        List<Map<String,Object>> list = jdbcTemplate.queryForList(pre_sql,args);
+        return list;
     }
-
 }
