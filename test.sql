@@ -10,10 +10,21 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2020-10-29 20:49:28
+Date: 2020-11-03 20:27:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for broadcast
+-- ----------------------------
+DROP TABLE IF EXISTS `broadcast`;
+CREATE TABLE `broadcast` (
+  `bc_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `publish_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for create_class
@@ -61,7 +72,7 @@ CREATE TABLE `userinfo` (
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `mailbox` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `school` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `school_id` int(11) NOT NULL,
+  `school_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `uid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -97,5 +108,6 @@ CREATE TABLE `voteinfo` (
   `theme` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `option` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `option_num` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `publish_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `publish_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `option_result` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
