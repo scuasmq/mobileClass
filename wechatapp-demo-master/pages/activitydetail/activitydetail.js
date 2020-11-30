@@ -2,7 +2,8 @@ Page({
   data: {
     activitydata:{},
     spaceimgs:[],
-    currentIndex:1
+    currentIndex:1,
+    stuInfoList:[]
   },
   onLoad: function (options) {
     console.log(options);
@@ -22,6 +23,21 @@ Page({
         title: this.data.activitydata.name
       })
     // },1000)
+  },
+  getAllStuInfo: function(class_id = 0){
+    wx.request({
+      url: 'http://47.113.114.73:9911/getClassStudentList/{'+class_id.toString()+'}',
+      data:{},
+      header:{
+        'content-type': 'application/json' //默认值
+      },
+      success(res){
+        console.log('getAllStuInfo return: ',res)
+        that.setData({
+          stuInfoList: res
+        })
+      }
+    })
   },
   setCurrent: function(e){
     this.setData({

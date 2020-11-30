@@ -1,13 +1,29 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/courses/courses",
+    "pages/coursedetail/coursedetail",
+    "pages/joincourse/joincourse",
+    "pages/test/test"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/courses/courses",
+        "text": "课程列表"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "用户"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

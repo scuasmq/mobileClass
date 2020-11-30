@@ -12,6 +12,29 @@ Page({
   onLoad: function () {
     this.fetchData()
   },
+  addStudent: function(class_id,class_name,data){
+    wx.request({
+      url: 'http://47.113.114.73:9911/grab_students',
+      data:{
+        'class_id':class_id,
+        'class_name':class_name,
+        'data':data
+      },
+      method:'POST',
+      header:{
+        'content-type': 'application/json' //默认值
+      },
+      success(res){
+        console.log('addStudent return:',res)
+        if(res.status_code == '500'){
+          console.log('add failure',res.message)
+        }
+        if(res.status_code == '200'){
+          console.log('add success',res.message)
+        }
+      }
+    })
+  },
   fetchData: function(){
     this.setData({
       industryarr:["请选择","移动互联网","手机游戏","互联网金融","O2O","智能硬件","SNS社交","旅游","影视剧","生活服务","电子商务","教育培训","运动和健康","休闲娱乐","现代农业","文化创意","节能环保","新能源","生物医药","IT软件","硬件","其他"],
