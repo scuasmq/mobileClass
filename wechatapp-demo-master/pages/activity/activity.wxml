@@ -6,7 +6,7 @@
 	</view>
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="conference-list">
-			<navigator class="conference-item" wx:for="{{show_list_join}}" wx:key="{{item.id}}" url="../activitydetail/activitydetail?id={{item.id}}">
+			<navigator class="conference-item" wx:for="{{show_list_create}}" wx:key="{{item.id}}" url="../activitydetail/activitydetail?id={{item.id}}">
 				<view class="conference-item-img">
 					<image src="{{item.imgurl}}" mode="aspectFill"></image>
 					<text class="hover{{index}}" data-status="{{item.status}}">{{item.status}}</text>

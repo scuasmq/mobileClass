@@ -9,7 +9,7 @@ Page({
     page: 0,  //分页
     list_create:[],
     list_join:[],
-    show_list_join:[]
+    show_list_create:[]
   },
   onLoad: function () { //加载数据渲染页面
     this.getClassList();
@@ -32,8 +32,8 @@ Page({
       success(res){
         console.log('getClassList return: ',res.data)
         that.setData({
-          list_create: res.data.list2,
-          list_join: res.data.list1
+          list_join: res.data.list1,
+          list_create: res.data.list2
         })
         that.fetchJoinClassList();
       }
@@ -58,29 +58,6 @@ Page({
       ]
     })
   },
-
-  fetchConferenceData:function(){  //获取会议室列表
-    const perpage = 10;
-    this.setData({
-      page:this.data.page+1
-    })
-    const page = this.data.page;
-    const newlist = [];
-    for (var i = (page-1)*perpage; i < page*perpage; i++) {
-      newlist.push({
-        "id":i+1,
-        "name":"云栖技术分享日（云栖TechDay"+(i+1)+"）",
-        "status": util.getRandomArrayElement(["进行中","报名中","已结束"]),
-        "time": "2016/07/12 14:00",
-        "coments": Math.floor(Math.random()*1000),
-        "address":"杭州云栖小镇咖啡馆  （杭州云计算产业园内）",
-        "imgurl":"https://img2020.cnblogs.com/blog/1976122/202011/1976122-20201130191434394-1502194.png"
-      })
-    }
-    this.setData({
-      activitylist:this.data.activitylist.concat(newlist)
-    })
-  },
   fetchJoinClassList:function(){ //获取加入的课程
     const perpage = 5;
     this.setData({
@@ -100,11 +77,11 @@ Page({
         "time": "周二晚 19:20",
         "coments": Math.floor(Math.random()*1000),
         "address":"二基楼B303",
-        "imgurl":"https://img2020.cnblogs.com/blog/1976122/202011/1976122-20201130191434394-1502194.png"
+        "imgurl":"https://img2020.cnblogs.com/blog/1976122/202011/1976122-20201130235455287-1660721123.png"
       })
     }
     this.setData({
-      show_list_join:this.data.show_list_join.concat(appendList)
+      show_list_create:this.data.show_list_create.concat(appendList)
     })
   },
   setSortBy:function(e){ //选择排序方式
@@ -135,7 +112,7 @@ Page({
   onPullDownRefresh:function(){ //下拉刷新
     this.setData({
       page:0,
-      show_list_join:[]
+      show_list_create:[]
     })
     this.fetchJoinClassList();
     this.fetchSortData();
