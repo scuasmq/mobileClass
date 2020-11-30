@@ -1,0 +1,46 @@
+"http://47.113.114.73:9911/grab_students"
+1.得到用户参加和创建的课程列表
+URL："http://47.113.114.73:9911/get_class_list/{uid}"
+
+Request：路径参数
+
+Response：
+{
+    "list1":[{class_name,class_id},{},...]
+    "list2":[{class_name,class_id},{},...]
+}//list1为创建的课程列表，list2为加入的课程列表
+
+
+2.得到参加某课程的所有人的信息
+URL："http://47.113.114.73:9911/getClassStudentList/{class_id}"
+
+Request:路径参数
+
+Response:[{username,mailbox,school,school_id,uid},{},...]
+
+
+3.添加一个学生
+URL："http://47.113.114.73:9911/grab_students"
+
+Request:
+{
+    "class_id":1,
+    "class_name":"dasd",
+    "data":"dsa,dsa,das"
+}
+
+Response:
+{
+    "status_code":"500",
+    "message":"USER NOT REGISTER"
+}
+或者
+{
+    "status_code":"500",
+    "message":"FAILURE"
+}
+或者
+{
+   "status_code":"200",
+   "message":"SUCCESS"
+}
