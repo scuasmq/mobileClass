@@ -6,13 +6,13 @@
 				<view class="input-item">
 					<text class="input-item-label">名字</text>
 					<view class="input-item-content">
-						<input type="text" placeholder="请输入你的名字"></input>
+						<input type="text" placeholder="请输入你的名字" bindinput="inputName"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label">学号</text>
 					<view class="input-item-content">
-						<input type="text" placeholder="请输入学号"></input>
+						<input type="text" placeholder="请输入学号" bindinput="inputId"></input>
 					</view>
 				</view>
 
@@ -23,7 +23,7 @@
 				</view>
 				<view class="input-item input-item-full">
 					<text class="input-item-label">一句话介绍一下自己</text>
-					<textarea placeholder="可输入50字" maxlength="50"></textarea>
+					<textarea placeholder="可输入50字" maxlength="50" bindinput="inputIntro"></textarea>
 				</view>
 				<view class="input-item input-item-full">
 

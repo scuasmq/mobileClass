@@ -14,7 +14,10 @@ Page({
   onLoad: function() {
     this.fetchData()
   },
-  addStudent: function(class_id, class_name, data) {
+  applySubmit: function(){
+    this.addStudent()
+  },
+  addStudent: function(class_id=9, class_name="研究与开发", data="zhangtong") {
     wx.request({
       url: 'http://47.113.114.73:9911/grab_students',
       data: {
@@ -28,20 +31,24 @@ Page({
       },
       success(res) {
         console.log('addStudent return:', res)
-        if (res.status_code == '500') {
+        if (res.data.status_code == '500') {
           console.log('add failure', res.message)
+          wx.showToast({
+            title: '加入失败',
+          })
         }
-        if (res.status_code == '200') {
+        if (res.data.status_code == '200') {
           console.log('add success', res.message)
+          wx.showToast({
+            title: '加入成功',
+          })
         }
       }
     })
   },
   fetchData: function() {
     this.setData({
-      industryarr: ["请选择", "移动互联网", "手机游戏", "互联网金融", "O2O", "智能硬件", "SNS社交", "旅游", "影视剧", "生活服务", "电子商务", "教育培训", "运动和健康", "休闲娱乐", "现代农业", "文化创意", "节能环保", "新能源", "生物医药", "IT软件", "硬件", "其他"],
-      statusarr: ["请选择", "初创时期", "市场扩展期", "已经盈利"],
-      jobarr: ["请选择", "创始人", "联合创始人", "产品", "技术", "营销", "运营", "设计", "行政", "其他"]
+      statusarr: ["请选择", "计算机学院", "文新学院", "数学学院"]
     })
   },
   bindPickerChange: function(e) { //下拉选择
@@ -78,11 +85,28 @@ Page({
       isorg: e.detail.value == "机构" ? true : false
     })
   },
-  applySubmit: function() {
-    wx.navigateTo({
-      url: '../service/service'
+  // applySubmit: function() {
+  //   wx.navigateTo({
+  //     url: '../service/service'
+  //   })
+  // },
+  inputName: function(e){
+    console.log('输入名字:', e.detail.value)
+    this.setData({
+      username: e.detail.value
     })
   },
+  inputId: function(e){
+    this.setData({
+      id: e.detail.value
+    })
+  },
+  inputIntro: function(e){
+    this.setData({
+      intro: e.detail.value
+    })
+  },
+
   uploadImage: function() {
     const that = this
     wx.chooseImage({

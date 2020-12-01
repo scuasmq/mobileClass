@@ -23,18 +23,23 @@ Page({
         title: this.data.activitydata.name
       })
     // },1000)
+    this.getAllStuInfo()
   },
-  getAllStuInfo: function(class_id = 0){
+  getAllStuInfo: function(class_id = 9){
+    const that = this
     wx.request({
-      url: 'http://47.113.114.73:9911/getClassStudentList/{'+class_id.toString()+'}',
+      url: 'http://47.113.114.73:9911/getClassStudentList/'+class_id.toString(),
       data:{},
       header:{
         'content-type': 'application/json' //默认值
       },
       success(res){
-        console.log('getAllStuInfo return: ',res)
+        console.log('getAllStuInfo return: ',res.data)
         that.setData({
-          stuInfoList: res
+          stuInfoList: res.data
+        })
+        that.setData({
+          stu_num: that.data.stuInfoList.length
         })
       }
     })

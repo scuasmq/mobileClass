@@ -29,7 +29,7 @@
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">学生情况：</text>
-  	  			<text class="text-right">已报名<text class="text-orange">{{activitydata.hasentered}}</text>人/限额<text class="text-orange">{{activitydata.total}}</text>人</text>
+  	  			<text class="text-right">已报名<text class="text-orange">{{stu_num}}</text>人/限额<text class="text-orange">{{activitydata.total}}</text>人</text>
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">校区：</text>
@@ -42,6 +42,7 @@
 	  	<view class="space-block-title">课程介绍</view>
 	  	<view class="space-block-content">
 	  		<view class="space-passage">提升学生自己学习和合作开发的能力</view>
+        <view class="space-passage" wx:for="{{stuInfoList}}" wx:key="{{item.id}}">已经加入的学生有:{{item.username}}</view>
 	  	</view>
   	</view>
   	<view class="space-block">
