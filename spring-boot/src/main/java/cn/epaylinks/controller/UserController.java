@@ -61,7 +61,6 @@ public class UserController
 		List<User> list = userService.getUserList();
 		return new ResponseEntity<List<User>>(list, headers, HttpStatus.OK);
 	}
-	
 	@RequestMapping("/qrcode/{uuid}")
 	@ResponseBody
 	String createQRCode(@PathVariable String uuid,HttpServletResponse response)
@@ -158,7 +157,7 @@ public class UserController
 			}
 			notifyPool(uuid);
 		}
-		
+
 		public synchronized void notifyPool(String uuid){
 			ScanPool pool = PoolCache.cacheMap.get(uuid);
 			pool.notifyPool();

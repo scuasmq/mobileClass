@@ -5,7 +5,8 @@
     "pages/courses/courses",
     "pages/coursedetail/coursedetail",
     "pages/joincourse/joincourse",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/bindUser/bindUser"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +23,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "用户"
+      },
+      {
+        "pagePath": "pages/bindUser/bindUser",
+        "text":"登陆"
       }
     ]
   },
