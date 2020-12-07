@@ -1,0 +1,5 @@
+<!--pages/user_page/user_page.wxml-->
+<text>pages/user_page/user_page.wxml</text>
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="scanQR">登陆</button>
+  </view>

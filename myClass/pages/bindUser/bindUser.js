@@ -1,66 +1,54 @@
-// pages/bindUser/bindUser.js
+const app = getApp();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    ip: app.globalData.request_url,
+  },
+  onLoad: function() {
+    console.log(this.data.ip)
+  },
+  applySubmit: function(){
+    this.addStudent()
+  },
+  userLogin: function() {
+    var that = this
+    var post_url = this.data.ip+'/wx_login/'+app.globalData.openid
+    wx.request({
+      url: post_url,
+      data: {
+        'username': that.data.username,
+        'password': that.data.password,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' //默认值
+      },
+      success(res) {
+        console.log('addStudent return:', res)
+        wx.showToast({
+          title: res.data,
+        })
+        if(res.data=="登陆成功"){
+          console.log('jump')
+          wx.navigateTo({
+            url: '../user_page/user_page'
+          })
+        }
+      }
+      
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  inputUsername: function(e){
+    console.log('输入名字:', e.detail.value)
+    this.setData({
+      username: e.detail.value
+    })
+  },
+  inputPassword: function(e){
+    this.setData({
+      password: e.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

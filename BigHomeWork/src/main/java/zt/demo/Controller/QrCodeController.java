@@ -28,7 +28,7 @@ public class QrCodeController {
         System.out.println(uuid);
 
         //TODO: 需要修改路径
-        String qr_code_path = "\\qr_code\\"+uuid.toString()+".jpg";
+        String qr_code_path = ".\\qr_code\\"+uuid.toString()+".jpg";
         qr_nologo(uuid,qr_code_path);
         return new QrCode(uuid, qr_code_path);
     }
@@ -61,6 +61,7 @@ public class QrCodeController {
         if(f<=0) System.out.println("qr_code 删除失败");
 
         if (list.size()>0){
+            //TODO: 删除图片
             return new QrResponse("success",(String)list.get(0).get("username"),(int)list.get(0).get("user_id"));
         }
         else{
@@ -77,11 +78,13 @@ public class QrCodeController {
         List<Map<String,Object>> list = jdbcTemplate.queryForList(pre_sql, pre_args);
         if(list.size()<=0) return "请先在微信登陆";
         String username = (String)list.get(0).get("username");
-        String password = (String)list.get(1).get("password");
-        int uid = (int)list.get(2).get("uid");
-        String sql = "insert into qr_info(uuid,username,uid) values(?,?,?)";
+        String password = (String)list.get(0).get("password");
+        int uid = (int)list.get(0).get("uid");
+
+        String sql = "insert into qr_info (uuid,username,uid) values (?,?,?)";
         Object args[] = {uuid,username,uid};
         int f = jdbcTemplate.update(sql,args);
+
         if(f<=0) return "扫描提交失败";
         return "扫码成功";
     }
