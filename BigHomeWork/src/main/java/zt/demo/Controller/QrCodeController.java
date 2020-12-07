@@ -13,12 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@RequestMapping("qr_code")
+@RequestMapping("/qr_code")
 @RestController
 public class QrCodeController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    //网页请求uuid
     @CrossOrigin
     @RequestMapping(value = "/uuid_path")
     @ResponseBody
@@ -44,6 +45,7 @@ public class QrCodeController {
         }
     }
 
+    //网页询问是否被扫
     @CrossOrigin
     @RequestMapping(value = "/qr_state/{uuid}")
     @ResponseBody

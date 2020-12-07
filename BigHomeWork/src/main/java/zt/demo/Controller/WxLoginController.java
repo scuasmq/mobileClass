@@ -87,4 +87,16 @@ public class WxLoginController {
         if(f<=0) return "网络错误";
         return "登陆成功";
     }
+
+    //微信用户免登陆
+    @CrossOrigin
+    @RequestMapping(value = "/wx_no_login/{openid}")
+    @ResponseBody
+    public int wx_no_login(@PathVariable String openid){
+        String sql = "select username from wxuserinfo where openid = ?";
+        Object args[] = {openid};
+        List<Map<String,Object>> list = jdbcTemplate.queryForList(sql,args);
+        if(list.size()>0) return 1;
+        else return 0;
+    }
 }
