@@ -3,12 +3,12 @@ package zt.demo.ClassExample;
 public class QrResponse {
     String state;
     String username;
-    int user_id;
+    int uid;
     public QrResponse(){}
-    public QrResponse(String state, String username, int user_id) {
+    public QrResponse(String state, String username, int uid) {
         this.state = state;
         this.username = username;
-        this.user_id = user_id;
+        this.uid = uid;
     }
 
     public String getState() {
@@ -27,11 +27,11 @@ public class QrResponse {
         this.username = username;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUid() {
+        return uid;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 }

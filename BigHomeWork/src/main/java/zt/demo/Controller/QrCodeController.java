@@ -27,7 +27,7 @@ public class QrCodeController {
         UUID uuid = UUID.randomUUID();
         System.out.println(uuid);
 
-        //TODO: 需要修改路径
+        //TODO: zt_需要修改路径
         String qr_code_path = ".\\qr_code\\"+uuid.toString()+".jpg";
         qr_nologo(uuid,qr_code_path);
         return new QrCode(uuid, qr_code_path);
@@ -37,7 +37,7 @@ public class QrCodeController {
     public void qr_nologo(UUID uuid,String dest_path){
         String requestUrl = uuid.toString();
         try{
-            //TODO: 需要修改路径
+            //TODO: zt_需要修改路径
             String logo_path = null; //".\\data\\logo.jpg"
             QrCodeUtil.save(requestUrl,logo_path,dest_path);
         }catch (Exception e){
@@ -50,9 +50,9 @@ public class QrCodeController {
     @RequestMapping(value = "/qr_state/{uuid}")
     @ResponseBody
     public QrResponse qr_state(@PathVariable String uuid){
-        //TODO: (1) 查询数据库是否有该uuid，有:success, 无:waiting
-        //TODO: (2) 改进一下，用缓存的map而不是数据库查询
-        String sql = "select username,user_id from qr_info where uuid = ?";
+        //TODO: (1) smq_查询数据库是否有该uuid，有:success, 无:waiting
+        //TODO: (2) smq_改进一下，用缓存的map而不是数据库查询
+        String sql = "select username,uid from qr_info where uuid = ?";
         Object args[]  = {uuid};
         List<Map<String,Object>> list = jdbcTemplate.queryForList(sql, args);
         String del_sql = "delete from qr_info where uuid = ?";
@@ -61,8 +61,8 @@ public class QrCodeController {
         if(f<=0) System.out.println("qr_code 删除失败");
 
         if (list.size()>0){
-            //TODO: 删除图片
-            return new QrResponse("success",(String)list.get(0).get("username"),(int)list.get(0).get("user_id"));
+            //TODO: smq_删除图片
+            return new QrResponse("success",(String)list.get(0).get("username"),(int)list.get(0).get("uid"));
         }
         else{
             return new QrResponse("waiting",null,0);
