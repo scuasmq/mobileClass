@@ -1,28 +1,50 @@
 <!--pages/bindUser/bindUser.wxml-->
-<button bindtap='login'>登录</button>
-<view class="container container-gray">
-	<view class="group">
-		<view class="group-header">基本信息</view>
-		<view class="group-body">
-			<view class="input-list">
-				<view class="input-item">
-					<text class="input-item-label">账号</text>
-					<view class="input-item-content">
-						<input type="text" placeholder="请输入你的账号" bindinput="inputUsername"></input>
+<view wx:if="{{!already_login}}">
+	<button bindtap='login'>登录</button>
+	<view class="container container-gray">
+		<view class="group">
+			<view class="group-header">基本信息</view>
+			<view class="group-body">
+				<view class="input-list">
+					<view class="input-item">
+						<text class="input-item-label">账号</text>
+						<view class="input-item-content">
+							<input type="text" placeholder="请输入你的账号" bindinput="inputUsername"></input>
+						</view>
 					</view>
-				</view>
-				<view class="input-item">
-					<text class="input-item-label">密码</text>
-					<view class="input-item-content">
-						<input type="text" placeholder="请输入密码" bindinput="inputPassword"></input>
+					<view class="input-item">
+						<text class="input-item-label">密码</text>
+						<view class="input-item-content">
+							<input type="text" placeholder="请输入密码" bindinput="inputPassword"></input>
+						</view>
 					</view>
 				</view>
 			</view>
+
+
+		</view>
+		<view class="btn-submit">
+			<button class="btn-block btn-orange" bindtap="userLogin">登陆</button>
 		</view>
 
+		<!-- <view class="log-reg-btn-view">
+		<button class="log-reg-btn" bindtap="userLogin">登陆</button>
+		<button class="log-reg-btn" bindtap="userRegister">注册</button>
+	</view> -->
+	</view>
+</view>
 
-	</view>
-	<view class="btn-submit">
-		<button class="btn-block btn-orange" bindtap="userLogin">登陆</button>
-	</view>
+<view class="btn-submit" wx:else>
+
+  <view class="wxinfo">
+    <button wx:if="{{!hasWxInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getWxInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="wxinfo-avatar" src="{{wxInfo.avatarUrl}}" mode="cover"></image>
+      <text class="wxinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+
+
+	<button class="btn-block btn-orange" bindtap="scanQR">登陆</button>
 </view>

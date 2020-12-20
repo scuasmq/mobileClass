@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/bindUser/bindUser",
     "pages/logs/logs",
     "pages/courses/courses",
     "pages/coursedetail/coursedetail",
     "pages/joincourse/joincourse",
     "pages/test/test",
-    "pages/bindUser/bindUser",
     "pages/user_page/user_page"
   ],
   "window": {
@@ -20,10 +19,6 @@
       {
         "pagePath": "pages/courses/courses",
         "text": "课程列表"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "用户"
       },
       {
         "pagePath": "pages/bindUser/bindUser",

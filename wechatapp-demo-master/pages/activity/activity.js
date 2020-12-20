@@ -18,7 +18,7 @@ Page({
     this.fetchSortData();
   },
 
-  getClassList: function(uid = 11){
+  getClassList: function(uid = 29){
     const that = this
     var url = 'http://47.113.114.73:9911/get_class_list/'+uid.toString()
     console.log('getClassList url:',url)

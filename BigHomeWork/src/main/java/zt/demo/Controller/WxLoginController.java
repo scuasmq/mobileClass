@@ -1,5 +1,6 @@
 package zt.demo.Controller;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -58,14 +59,14 @@ public class WxLoginController {
     @CrossOrigin
     @RequestMapping(value = "/wx_login/{openid}")
     @ResponseBody
-    public String Login(@RequestBody Map<String,Object>map,@PathVariable String openid){
+    public int Login(@RequestBody Map<String,Object>map,@PathVariable String openid){
         String username=(String)map.get("username");
         String password=(String)map.get("password");
         //查询用户是否存在
         String pre_sql="select uid from userinfo where username = ? and password = ?";
         Object pre_args[]={username,password};
         List<Map<String,Object>> list=jdbcTemplate.queryForList(pre_sql,pre_args);
-        if(list.size()<=0) return "用户名或密码错误";
+        if(list.size()<=0) return -1;
         int uid = (int)list.get(0).get("uid");
         //更新table wxuserinfo
         // //查询之前的openid,存在则update,不存在则insert
@@ -84,8 +85,8 @@ public class WxLoginController {
             Object args[] = {openid,username,password,uid};
             f = jdbcTemplate.update(sql,args);
         }
-        if(f<=0) return "网络错误";
-        return "登陆成功";
+        if(f<=0) return -1;
+        return uid;
     }
 
     //微信用户免登陆
@@ -93,10 +94,11 @@ public class WxLoginController {
     @RequestMapping(value = "/wx_no_login/{openid}")
     @ResponseBody
     public int wx_no_login(@PathVariable String openid){
-        String sql = "select username from wxuserinfo where openid = ?";
+        String sql = "select * from wxuserinfo where openid = ?";
         Object args[] = {openid};
         List<Map<String,Object>> list = jdbcTemplate.queryForList(sql,args);
-        if(list.size()>0) return 1;
-        else return 0;
+        System.out.println((int)list.get(0).get("uid"));
+        if(list.size()>0) return (int)list.get(0).get("uid");
+        else return -1;
     }
 }
