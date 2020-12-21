@@ -37,22 +37,47 @@
   	  		</view>
   	  	</view>
   	  </view>
-	  </view>
+		</view>
+		<view class="space-block">
+	  	<view class="space-block-title">公告</view>
+			<view class="space-passage" wx:for="{{broadcast_list}}" wx:key="id">{{item.publish_time}}: {{item.message}}</view>
+  	</view>
 	  <view class="space-block">
 	  	<view class="space-block-title">课程介绍</view>
 	  	<view class="space-block-content">
 	  		<view class="space-passage">提升学生自己学习和合作开发的能力</view>
-        <view class="space-passage" wx:for="{{stuInfoList}}" wx:key="{{item.id}}">已经加入的学生有:{{item.username}}</view>
-	  	</view>
-  	</view>
-  	<view class="space-block">
-	  	<view class="space-block-title">评论</view>
-	  	<view class="space-block-content">
-
+        <view class="space-passage" wx:for="{{stuInfoList}}" wx:key="id">已经加入的学生有:{{item.username}}</view>
 	  	</view>
   	</view>
 	</view>
 	<view class="container-footer">
-		<text class="apply-btn" bindtap="toJoin">进入课堂</text>
+		<text class="apply-btn" bindtap="alert_sign_in" wx:if="{{class_type==='join'}}">签到</text>
+		<text class="apply-btn" bindtap="sign_in_scanQR" wx:else>发布签到</text>
 	</view>
+	<view>
+    <block wx:if="{{isShowConfirm}}">
+        <view class='toast-box'>
+            <view class='toastbg'></view>
+            <view class='showToast'>
+                <view class='toast-title'>
+                    <text>签到</text>
+                </view>
+                <view class='toast-main'>
+                    <view class='toast-input'>
+                        <input type='password' placeholder='输入签到码' bindinput='input_sign_in_code'
+                            data-name='stuEidtName'></input>
+                    </view>
+                </view>
+                <view class='toast-button'>
+                    <view class='button1'>
+                        <button catchtap='tapCancel' style = "width:100%" >取消</button>
+                    </view>
+                    <view class='button2'>
+                        <button  style = "width:100%"  catchtap='tapConfirm'>确定</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
 </view>

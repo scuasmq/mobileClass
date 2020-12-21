@@ -1,5 +1,5 @@
 <view class="top-tab flex-wrp flex-tab ">
-	<view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx"
+	<view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:key = "id"
 		wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
 		{{itemName}}
 	</view>
@@ -11,7 +11,7 @@
 		<view class="container">
 				<view class="conference-list">
 					<navigator class="conference-item" wx:for="{{show_list_join}}" wx:key="id"
-						url="../coursedetail/coursedetail?id={{item.id}}">
+						url="../coursedetail/coursedetail?class_name={{item.class_name}}&class_id={{item.class_id}}&class_type=join">
 						<view class="conference-item-img">
 							<image src="{{item.imgurl}}" mode="aspectFill"></image>
 							<text class="hover{{index}}" data-status="{{item.status}}">{{item.status}}</text>
@@ -35,11 +35,9 @@
 
 	<view class="ctnt0" hidden="{{currentNavtab==1 ? '' : true}}">
 		<view class="container">
-
-				test
 				<view class="conference-list">
 					<navigator class="conference-item" wx:for="{{show_list_create}}" wx:key="id"
-						url="../coursedetail/coursedetail?id={{item.id}}">
+						url="../coursedetail/coursedetail?class_name={{item.class_name}}&class_id={{item.class_id}}&class_type=create">
 						<view class="conference-item-img">
 							<image src="{{item.imgurl}}" mode="aspectFill"></image>
 							<text class="hover{{index}}" data-status="{{item.status}}">{{item.status}}</text>

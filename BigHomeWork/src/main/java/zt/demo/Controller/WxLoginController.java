@@ -97,7 +97,6 @@ public class WxLoginController {
         String sql = "select * from wxuserinfo where openid = ?";
         Object args[] = {openid};
         List<Map<String,Object>> list = jdbcTemplate.queryForList(sql,args);
-        System.out.println((int)list.get(0).get("uid"));
         if(list.size()>0) return (int)list.get(0).get("uid");
         else return -1;
     }

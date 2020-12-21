@@ -10,19 +10,29 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#0068C4",
+    "navigationBarTitleText": "interActonClass",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/courses/courses",
-        "text": "课程列表"
+        "text": "课程列表",
+        "iconPath": "images/class-black.png",
+        "selectedIconPath": "images/class-blue.png"
       },
       {
         "pagePath": "pages/bindUser/bindUser",
-        "text": "登陆"
+        "text": "登陆",
+        "iconPath": "images/me-black.png",
+        "selectedIconPath": "images/me-blue.png"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "登陆",
+        "iconPath": "images/me-black.png",
+        "selectedIconPath": "images/me-blue.png"
       }
     ]
   },

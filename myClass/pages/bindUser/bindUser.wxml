@@ -1,6 +1,5 @@
 <!--pages/bindUser/bindUser.wxml-->
 <view wx:if="{{!already_login}}">
-	<button bindtap='login'>登录</button>
 	<view class="container container-gray">
 		<view class="group">
 			<view class="group-header">基本信息</view>
@@ -15,36 +14,89 @@
 					<view class="input-item">
 						<text class="input-item-label">密码</text>
 						<view class="input-item-content">
-							<input type="text" placeholder="请输入密码" bindinput="inputPassword"></input>
+							<input type="text" type='password' placeholder="请输入密码" bindinput="inputPassword"></input>
 						</view>
 					</view>
 				</view>
 			</view>
-
-
 		</view>
 		<view class="btn-submit">
-			<button class="btn-block btn-orange" bindtap="userLogin">登陆</button>
+			<button class="btn-block btn-orange" bindtap="userLogin">登录</button>
 		</view>
-
-		<!-- <view class="log-reg-btn-view">
-		<button class="log-reg-btn" bindtap="userLogin">登陆</button>
-		<button class="log-reg-btn" bindtap="userRegister">注册</button>
-	</view> -->
 	</view>
 </view>
 
-<view class="btn-submit" wx:else>
-
-  <view class="wxinfo">
-    <button wx:if="{{!hasWxInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getWxInfo"> 获取头像昵称 </button>
+<view class="container more" wx:else>
+	<view class="user flex-wrp">
+    <view class="avatar flex-item">			
+			<button wx:if="{{!hasWxInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getWxInfo"> 获取头像昵称 </button>
     <block wx:else>
-      <image class="wxinfo-avatar" src="{{wxInfo.avatarUrl}}" mode="cover"></image>
-      <text class="wxinfo-nickname">{{userInfo.nickName}}</text>
+      <image class="userinfo-avatar" src="{{wxInfo.avatarUrl}}" background-size="cover"></image>
     </block>
+    </view>
+    <view class="user-info flex-item">
+      <text class="userinfo-nickname">{{wxInfo.nickName}}</text>
+      <text class="edit">{{user_info.username}}</text>
+    </view>
   </view>
 
-
-
-	<button class="btn-block btn-orange" bindtap="scanQR">登陆</button>
+  <view class="my">
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/eye.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+				<text bindtap="scanQR">扫码登录</text>
+				<!-- <button  bindtap="scanQR">登陆</button> -->
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/star.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的收藏</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/draft.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的草稿</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/recent.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>最近浏览</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/book.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的书架</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/live.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的 Live</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/zhi.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的值乎</text>
+      </view>
+    </view>
+	</view>
 </view>

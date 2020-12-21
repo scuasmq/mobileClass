@@ -8,7 +8,7 @@ Page({
     hasWxInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  onLoad: function () {
+  onLoad: function () { 
     console.log(!this.data.hasWxInfo && this.data.canIUse)
     this.getOpenid()
     if (app.globalData.wxInfo) {
@@ -65,6 +65,7 @@ Page({
           success: function () {
             setTimeout(function () {
               if (res.data != -1) {
+                that.get_user_info(app.globalData.uid)
                 that.setData({
                   already_login: true,
                 })
@@ -112,6 +113,7 @@ Page({
         console.log('no_login_ret:',res.data)
         if (res.data != -1) {
           app.globalData.uid = res.data
+          that.get_user_info(res.data)
           wx.showToast({
             title: '已绑定',
             duration: 2000,
@@ -120,8 +122,7 @@ Page({
                 that.setData({
                   already_login: true
                 })
-              }
-                , 2000);
+              }, 2000);
             }
           })
         }
@@ -131,6 +132,25 @@ Page({
       }
     })
   },
+
+  get_user_info: function(uid){
+    var that = this
+    wx.request({
+      url: 'http://47.113.114.73:9911/get_one_user_info/'+uid.toString(),
+      data:{},
+      header:{
+        'content-type': 'application/json' //默认值
+      },
+      success(res){
+        console.log('get_user_info return: ',res.data)
+        app.globalData.user_info = res.data
+        that.setData({
+          user_info: res.data
+        })
+      }
+    })
+  },
+
   inputUsername: function (e) {
     this.setData({
       username: e.detail.value

@@ -31,9 +31,8 @@ App({
     userCode:null,
     userInfo:null,
     openid:null,
-    username:null,
     userid:null,
-
+    user_info:null,
     // request_url: 'http://47.113.114.73:9911' //项目
     request_url: 'http://127.0.0.1:9911' //开发
   }
